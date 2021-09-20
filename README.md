@@ -1,0 +1,1 @@
+# getcrudbyuml-core
