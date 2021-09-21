@@ -48,7 +48,9 @@ if(isset($_REQUEST['api'])){
 <div class="row">
 	<div class="col-6 col-sm-12">
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="fieldJSON" style="height: 100px"></textarea>
+          <textarea class="form-control" placeholder="Leave a comment here" id="fieldJSON" style="height: 100px">
+          {"id":148,"nome":"Store","objetos":[{"id":327,"nome":"Product","id_software_objetos":148,"atributos":[{"id":1305,"nome":"id","tipo":"Int","indice":"PRIMARY","id_objeto_atributos":327},{"id":1306,"nome":"description","tipo":"string","indice":"","id_objeto_atributos":327},{"id":1307,"nome":"price","tipo":"float","indice":"","id_objeto_atributos":327}]},{"id":328,"nome":"User","id_software_objetos":148,"atributos":[{"id":1302,"nome":"id","tipo":"Int","indice":"PRIMARY","id_objeto_atributos":328},{"id":1303,"nome":"name","tipo":"string","indice":"","id_objeto_atributos":328},{"id":1304,"nome":"email","tipo":"string","indice":"","id_objeto_atributos":328}]}]}
+          </textarea>
           <label for="floatingTextarea2">JSON</label>
         </div>
     </div>
@@ -80,7 +82,7 @@ if(isset($_REQUEST['api'])){
             const data = JSON.parse(strData);
             console.log(strData);
             
-            fetch("http://localhost/getcrudbyuml/getcrudbyuml-core/src/api/software", {
+            fetch("https://core.getcrudbyuml.com/api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -89,8 +91,7 @@ if(isset($_REQUEST['api'])){
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log("Success:", data);
-                document.querySelector("#fieldSQL").value = data['files']['database_sqlite.sql'];
+                document.querySelector("#fieldSQL").value = data['files']['database_pg.sql'];
                   
                 
             })

@@ -24,6 +24,9 @@ class MainAPIController{
             return;
         }
         header('Content-type: application/json');
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: *");
         
         $body = file_get_contents('php://input');
         $jsonBody = json_decode($body);
