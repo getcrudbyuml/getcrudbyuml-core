@@ -46,7 +46,7 @@ class MainAPIController{
             
         }
         
-        $strCode = DBGerador::main($software);
+        $strCode = array("files" => DBGerador::main($software));
         echo json_encode($strCode);
         
         

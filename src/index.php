@@ -90,7 +90,7 @@ if(isset($_REQUEST['api'])){
             .then((response) => response.json())
             .then((data) => {
                 console.log("Success:", data);
-                document.querySelector("#fieldSQL").value = data['store_banco_sqlite.sql'];
+                document.querySelector("#fieldSQL").value = data['files']['database_sqlite.sql'];
                   
                 
             })

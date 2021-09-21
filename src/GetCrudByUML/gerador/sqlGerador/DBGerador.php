@@ -35,7 +35,6 @@ class DBGerador
 
     public function gerarCodigo()
     {
-        $this->geraINI();
         $this->geraBancoPG();
         $this->geraBancoMysql();
         $this->geraBancoSqlite();
@@ -44,25 +43,6 @@ class DBGerador
     }
 
    
-
-    public function geraINI()
-    {
-        $codigo = '
-;configurações do banco de dados.
-;Banco de regras de negócio do sistema.
-            
-sgdb = sqlite
-host = localhost
-port = 5432
-db_name = ../' . $this->software->getNomeSnakeCase() . '.db
-user = root
-password = 123
-';
-        $path = $this->software->getNomeSnakeCase() . '_db.ini';
-        $this->listaDeArquivos[$path] = $codigo;
-        return $codigo;
-    }
-
     public function geraBancoPG()
     {
         $objetosNN = array();
@@ -183,7 +163,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . '
                 }
             }
         }
-        $path = $this->software->getNomeSnakeCase() . '_banco_pg.sql';
+        $path = 'database_pg.sql';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
     }
@@ -313,7 +293,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . '
             }
         }
     }
-        $path = $this->software->getNomeSnakeCase() . '_banco_mysql.sql';
+        $path = 'database_mysql.sql';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
     }
@@ -396,7 +376,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . ' ADD COLUMN  ' . $atributo
         }
         
         
-        $path = $this->software->getNomeSnakeCase() . '_banco_sqlite.sql';
+        $path = 'database_sqlite.sql';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
         
