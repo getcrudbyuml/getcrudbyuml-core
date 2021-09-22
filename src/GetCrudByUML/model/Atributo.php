@@ -14,7 +14,14 @@ class Atributo {
 	private $nome;
 	private $tipo;
 	private $indice;
+	private $lenght;
 
+	public function setLenght($lenght){
+	    $this->lenght = $lenght;
+	}
+	public function getLenght(){
+	    return $this->lenght;
+	}
 	public function setId($id) {
 		$this->id = $id;
 	}

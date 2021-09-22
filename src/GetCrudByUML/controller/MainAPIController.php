@@ -7,6 +7,7 @@ use GetCrudByUML\model\Software;
 use GetCrudByUML\model\Objeto;
 use GetCrudByUML\model\Atributo;
 use GetCrudByUML\gerador\sqlGerador\DBGerador;
+use GetCrudByUML\gerador\sqlGerador\DMLGenerator;
 
 /**
  * 
@@ -72,8 +73,13 @@ class MainAPIController{
             $software->addObjeto($newObjeto);
             
         }
+        $arquivos1 = DBGerador::main($software);
+        $arquivos2 = DMLGenerator::main($software);
         
-        $strCode = array("files" => DBGerador::main($software));
+        $merge = array_merge($arquivos1, $arquivos2);
+        $strCode = array("files" => $merge);
+        
+        
         echo json_encode($strCode);
     }
 
@@ -82,6 +88,14 @@ class MainAPIController{
         if(!isset($jsonVar->atributos) && !isset($jsonVar->attributes)){
             return $newObjeto;
         }
+        $nameObj = "";
+        if(isset($jsonVar->name)){
+            $nameObj = $jsonVar->name;
+        }
+        if(isset($jsonVar->nome)){
+            $nameObj = $jsonVar->nome;
+        }
+        $newObjeto->setNome($nameObj);
         $atributos = array(); 
         if(isset($jsonVar->atributos)){
             $atributos = $jsonVar->atributos;
@@ -95,6 +109,13 @@ class MainAPIController{
             if(isset($atributo->indice)){
                 $indice = $atributo->indice;
             } 
+            
+            if(isset($atributo->length))
+            {
+                $newAtributo->setLenght($atributo->length);
+            } 
+            
+            
             if(isset($atributo->index)){
                 $indice = $atributo->index;
             }
