@@ -39,7 +39,9 @@ class MainAPIController{
             $newObjeto->setNome($objeto->nome);
             foreach($objeto->atributos as $atributo){
                 $newAtributo = new Atributo();
-                $newAtributo->setIndice($atributo->indice);
+                if(isset($atributo->indice)){
+                    $newAtributo->setIndice($atributo->indice);    
+                }
                 $newAtributo->setNome($atributo->nome);
                 $newAtributo->setTipo($atributo->tipo);
                 $newObjeto->addAtributo($newAtributo);

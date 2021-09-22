@@ -163,7 +163,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . '
                 }
             }
         }
-        $path = 'database_pg.sql';
+        $path = 'database_pg';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
     }
@@ -293,7 +293,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . '
             }
         }
     }
-        $path = 'database_mysql.sql';
+        $path = 'database_mysql';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
     }
@@ -376,7 +376,7 @@ ALTER TABLE ' . $atributo->getArrayTipoSnakeCase() . ' ADD COLUMN  ' . $atributo
         }
         
         
-        $path = 'database_sqlite.sql';
+        $path = 'database_sqlite';
         $this->listaDeArquivos[$path] = $codigo;
         return $codigo;
         
