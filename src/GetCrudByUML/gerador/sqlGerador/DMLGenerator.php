@@ -5,7 +5,6 @@
 namespace GetCrudByUML\gerador\sqlGerador;
 use GetCrudByUML\model\Software;
 use GetCrudByUML\model\Objeto;
-use GetCrudByUML\model\Atributo;
 
 
 
@@ -87,11 +86,10 @@ class DMLGenerator
             }
         }
         $codigo = '';
-        $parametros = array();
+        
         $varPrimary = array();
-        $parametros[] = ucfirst($objeto->getNome()) . ' $' . lcfirst($objeto->getNome());
         foreach($objetos1N as $objeto2){
-            $parametros[] = ucfirst($objeto2->getNome()).' $'.lcfirst($objeto2->getNome());
+            
             foreach($objeto2->getAtributos() as $attr){
                 if($attr->isPrimary()){
                     $varPrimary[] = '
@@ -163,7 +161,7 @@ INSERT INTO ' . $objeto->getNomeSnakeCase() . '(';
         
         
         $codigo = 'UPDATE ' . $objeto->getNomeSnakeCase() . '
-        SET
+                SET
                 ';
         $listaAtributo = array();
         foreach ($atributosComuns as $atributo) {

@@ -1,0 +1,7 @@
+{
+    "name": "GetCrudByUML Core",
+    "version": "0.1.0",
+    "description": "This API generate code",
+    "title": "GetCrudByUML - API Core",
+    "url" : "https://core.getcrudbyuml.com/v1"
+  }
